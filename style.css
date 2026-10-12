@@ -143,7 +143,7 @@ body::before {               /* filete dorado superior */
 
 /* ---------- Tabla ---------- */
 .head-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-.seg { display: inline-flex; background: var(--surface-2); border-radius: 999px; padding: 3px; }
+.seg { display: inline-flex; flex-wrap: wrap; background: var(--surface-2); border-radius: 999px; padding: 3px; }
 .seg button {
   font: inherit; font-size: 12.5px; border: 0; background: transparent; color: var(--text-2);
   padding: 6px 14px; border-radius: 999px; cursor: pointer;
@@ -191,3 +191,4 @@ tfoot td { font-weight: 800; border-bottom: 0; color: var(--gold-hi); }
 }
 .filtro > span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
 .chart .off { opacity: .22; transition: opacity .2s; }
+@media (max-width: 520px) { .filtro { border-radius: 16px; } .seg button { padding: 6px 10px; } }

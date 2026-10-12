@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Cierres Nova Sep–Oct</title>
-<meta name="description" content="Reporte de cierres de Century 21 Nova, septiembre y octubre 2026: equipo, alquileres vs ventas, gross y promedios.">
+<title>Cierres Nova Jul–Oct</title>
+<meta name="description" content="Reporte de cierres de Century 21 Nova, julio a octubre 2026: equipo, alquileres vs ventas, gross y promedios.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap">
@@ -18,11 +18,11 @@
     <div class="logo-c21" role="img" aria-label="Century 21 Nova">
       <span class="word">CENTURY 21</span><span class="bar"></span><span class="nova">NOVA</span>
     </div>
-    <div class="meta"><b>Reporte de cierres</b>Sep – Oct 2026</div>
+    <div class="meta"><b>Reporte de cierres</b>Jul – Oct 2026</div>
   </header>
 
   <section class="hero">
-    <div class="eyebrow" id="eyebrow">Septiembre – octubre 2026</div>
+    <div class="eyebrow" id="eyebrow">Julio – octubre 2026</div>
     <h1><span id="heroLead">Las ventas son el</span> <span class="grad" id="heroPct">—</span> del gross</h1>
     <p id="heroTxt"></p>
   </section>
@@ -30,7 +30,9 @@
   <nav class="filtro" aria-label="Filtrar por mes">
     <span>Período</span>
     <div class="seg" id="periodo" role="group" aria-label="Período">
-      <button type="button" data-p="todo" aria-pressed="true">Sep + Oct</button>
+      <button type="button" data-p="todo" aria-pressed="true">Jul – Oct</button>
+      <button type="button" data-p="jul" aria-pressed="false">Julio</button>
+      <button type="button" data-p="ago" aria-pressed="false">Agosto</button>
       <button type="button" data-p="sep" aria-pressed="false">Septiembre</button>
       <button type="button" data-p="oct" aria-pressed="false">Octubre*</button>
     </div>
@@ -88,7 +90,7 @@
 
   <footer class="foot">
     <p>* Octubre en curso: cierres cargados al 12/10/2026.</p>
-    <p>Gross = comisión bruta de la oficina, expresada en guaraníes. Los cierres en dólares se convierten a TC 5.750 (el equivalente en US$ va debajo de cada indicador). Septiembre se cuenta por fecha de cobro.</p>
+    <p>Gross = comisión bruta de la oficina, expresada en guaraníes. Los cierres en dólares se convierten a TC 5.750 (el equivalente en US$ va debajo de cada indicador). Julio a septiembre se cuentan por fecha de cobro. No incluye un cierre de junio (₲ 1,3 M) cobrado en julio que estaba fuera de la tabla original.</p>
     <p>Antigüedad de asesores calculada al 12/10/2026; algunos años de ingreso están por confirmar.</p>
   </footer>
 </div>
@@ -99,13 +101,14 @@
 /* Octubre: cierres al 12/10 (mes en curso). Montos en Gs convertidos a USD con TC 5.750 */
 const TC = 5750;
 const D = {
-  meses: ['Septiembre', 'Octubre*'],
-  alq:  { n: [4, 2], g: [2383.70, 1430000 / TC + 1300] },
-  ven:  { n: [6, 1], g: [8147.57, 5500000 / TC] },
+  meses: ['Julio', 'Agosto', 'Septiembre', 'Octubre*'],
+  alq:  { n: [22, 0, 4, 2], g: [7049.25, 0, 2383.70, 1430000 / TC + 1300] },
+  ven:  { n: [5, 7, 6, 1],  g: [13756.19, 19186.71, 8147.57, 5500000 / TC] },
   lados: [
-    { k: 'Colocación',   n: [8, 1], g: [8947.27, 1300] },
-    { k: 'Captación',    n: [1, 1], g: [1185.00, 5500000 / TC] },
-    { k: 'Ambas puntas', n: [1, 1], g: [399.00, 1430000 / TC] }
+    { k: 'Colocación',   n: [6, 0, 8, 1],  g: [8009.14, 0, 8947.27, 1300] },
+    { k: 'Capta/Coloca', n: [3, 5, 0, 0],  g: [1513.83, 14700.75, 0, 0] },
+    { k: 'Ambas puntas', n: [16, 0, 1, 1], g: [9845.00, 0, 399.00, 1430000 / TC] },
+    { k: 'Captación',    n: [2, 2, 1, 1],  g: [1437.47, 4485.96, 1185.00, 5500000 / TC] }
   ],
   /* Asesores por antigüedad al 12/10/2026 (años de ingreso por confirmar) */
   equipo: [
@@ -115,9 +118,11 @@ const D = {
   ]
 };
 const PERIODOS = {
-  todo: { idx: [0, 1], label: 'septiembre y octubre*', eyebrow: 'Septiembre – octubre 2026' },
-  sep:  { idx: [0],    label: 'septiembre', eyebrow: 'Septiembre 2026 · último mes cerrado' },
-  oct:  { idx: [1],    label: 'octubre* (en curso)', eyebrow: 'Octubre 2026 · en curso al 12/10' }
+  todo: { idx: [0, 1, 2, 3], label: 'julio a octubre*', eyebrow: 'Julio – octubre 2026' },
+  jul:  { idx: [0], label: 'julio', eyebrow: 'Julio 2026' },
+  ago:  { idx: [1], label: 'agosto', eyebrow: 'Agosto 2026' },
+  sep:  { idx: [2], label: 'septiembre', eyebrow: 'Septiembre 2026 · último mes cerrado' },
+  oct:  { idx: [3], label: 'octubre* (en curso)', eyebrow: 'Octubre 2026 · en curso al 12/10' }
 };
 
 const sum = a => a.reduce((x, y) => x + y, 0);
@@ -150,7 +155,7 @@ function totales(idx) {
   T.avg = div(T.gross, T.total); T.avgAlq = div(T.alqG, T.alqN); T.avgVen = div(T.venG, T.venN);
   return T;
 }
-let T = totales([0, 1]);
+let T = totales([0, 1, 2, 3]);
 
 /* ---- Tooltip ---- */
 const tip = $('#tip');
