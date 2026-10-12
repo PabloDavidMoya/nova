@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Cierres Nova Jul–Oct</title>
-<meta name="description" content="Reporte de cierres de Century 21 Nova, julio a octubre 2026: equipo, alquileres vs ventas, gross y promedios.">
+<title>Cierres Nova Jul–Sep</title>
+<meta name="description" content="Reporte de cierres de Century 21 Nova, julio a septiembre 2026, con octubre en curso aparte: gross de ventas y alquileres, volumen y promedios.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap">
@@ -18,11 +18,11 @@
     <div class="logo-c21" role="img" aria-label="Century 21 Nova">
       <span class="word">CENTURY 21</span><span class="bar"></span><span class="nova">NOVA</span>
     </div>
-    <div class="meta"><b>Reporte de cierres</b>Jul – Oct 2026</div>
+    <div class="meta"><b>Reporte de cierres</b>Jul – Sep 2026 · octubre en curso</div>
   </header>
 
   <section class="hero">
-    <div class="eyebrow" id="eyebrow">Julio – octubre 2026</div>
+    <div class="eyebrow" id="eyebrow">Julio – septiembre 2026</div>
     <h1><span id="heroLead">Las ventas son el</span> <span class="grad" id="heroPct">—</span> del gross</h1>
     <p id="heroTxt"></p>
   </section>
@@ -30,25 +30,32 @@
   <nav class="filtro" aria-label="Filtrar por mes">
     <span>Período</span>
     <div class="seg" id="periodo" role="group" aria-label="Período">
-      <button type="button" data-p="todo" aria-pressed="true">Jul – Oct</button>
+      <button type="button" data-p="todo" aria-pressed="true">Jul – Sep</button>
       <button type="button" data-p="jul" aria-pressed="false">Julio</button>
       <button type="button" data-p="ago" aria-pressed="false">Agosto</button>
       <button type="button" data-p="sep" aria-pressed="false">Septiembre</button>
-      <button type="button" data-p="oct" aria-pressed="false">Octubre*</button>
     </div>
   </nav>
 
-  <section class="kpis" aria-label="Indicadores principales">
+  <section class="kpis" aria-label="Gross">
     <div class="kpi"><small>Transacciones cerradas</small><div class="v" data-n="total" data-f="int">0</div><div class="s" id="sTotal"></div></div>
-    <div class="kpi alq"><small>Alquileres</small><div class="v" data-n="alqN" data-f="int">0</div><div class="s" id="sAlq"></div></div>
-    <div class="kpi ven"><small>Ventas</small><div class="v" data-n="venN" data-f="int">0</div><div class="s" id="sVen"></div></div>
-    <div class="kpi"><small>Gross total</small><div class="v" data-n="gross" data-f="gs">0</div><div class="s" id="sGross"></div></div>
+    <div class="kpi gold"><small>Gross total · comisiones</small><div class="v" data-n="gross" data-f="usd">0</div><div class="s" id="sGross"></div></div>
+    <div class="kpi ven"><small>Gross de ventas</small><div class="v" data-n="venG" data-f="usd">0</div><div class="s" id="sVenG"></div></div>
+    <div class="kpi alq"><small>Gross de alquileres</small><div class="v" data-n="alqG" data-f="usd">0</div><div class="s" id="sAlqG"></div></div>
   </section>
-  <section class="kpis second" aria-label="Promedios">
-    <div class="kpi"><small>Promedio por transacción</small><div class="v" data-n="avg" data-f="gs">0</div><div class="s" id="sAvg"></div></div>
-    <div class="kpi alq"><small>Promedio por alquiler</small><div class="v" data-n="avgAlq" data-f="gs">0</div><div class="s" id="sAvgAlq"></div></div>
-    <div class="kpi ven"><small>Promedio por venta</small><div class="v" data-n="avgVen" data-f="gs">0</div><div class="s" id="sAvgVen"></div></div>
-    <div class="kpi"><small>Mayor gross</small><div class="v" id="winner">—</div><div class="s" id="diff"></div></div>
+  <section class="kpis second" aria-label="Promedios y volumen">
+    <div class="kpi"><small>Comisión promedio por operación</small><div class="v" data-n="avg" data-f="usd">0</div><div class="s" id="sAvg"></div></div>
+    <div class="kpi ven"><small>Promedio por venta</small><div class="v" data-n="avgVen" data-f="usd">0</div><div class="s" id="sAvgVen"></div></div>
+    <div class="kpi alq"><small>Promedio por alquiler</small><div class="v" data-n="avgAlq" data-f="usd">0</div><div class="s" id="sAvgAlq"></div></div>
+    <div class="kpi vol"><small>Volumen de ventas</small><div class="v" data-n="venP" data-f="usd">0</div><div class="s" id="sVol"></div></div>
+  </section>
+
+  <section class="card oct" aria-label="Octubre en curso">
+    <div class="oct-head">
+      <div><h2>Octubre <span class="tag">en curso · al 12/10</span></h2>
+      <p class="sub">Va aparte: no suma a los totales de julio a septiembre.</p></div>
+    </div>
+    <div class="oct-grid" id="octGrid"></div>
   </section>
 
   <section class="card versus">
@@ -60,14 +67,14 @@
 
   <section class="card versus">
     <h2>Alquiler vs venta</h2>
-    <p class="sub">Cuántos cierres son de cada tipo y cuánto dinero deja cada uno.</p>
+    <p class="sub">Cuántos cierres son de cada tipo y cuánto gross (comisión) deja cada uno.</p>
     <div class="vs-row"><span>% de transacciones</span><div class="bar100" id="bTrans"></div></div>
     <div class="vs-row"><span>% del gross</span><div class="bar100" id="bGross"></div></div>
     <div class="legend"><span style="--c:var(--alq)">Alquiler</span><span style="--c:var(--ven)">Venta</span></div>
   </section>
 
   <section class="grid2">
-    <div class="card"><h2>Gross por mes</h2><p class="sub">Guaraníes cobrados, por mes de cobro</p><svg class="chart" id="cGross" role="img" aria-label="Gross por mes, alquiler y venta"></svg></div>
+    <div class="card"><h2>Gross por mes</h2><p class="sub">Comisiones cobradas en US$, por mes de cobro</p><svg class="chart" id="cGross" role="img" aria-label="Gross por mes, alquiler y venta"></svg></div>
     <div class="card"><h2>Transacciones por mes</h2><p class="sub">Cantidad de cierres</p><svg class="chart" id="cTrans" role="img" aria-label="Transacciones por mes, alquiler y venta"></svg></div>
   </section>
 
@@ -79,7 +86,7 @@
 
   <section class="card">
     <div class="head-row">
-      <div><h2>Detalle por mes</h2><p class="sub" style="margin-bottom:0">Meses del período seleccionado</p></div>
+      <div><h2>Detalle por mes</h2><p class="sub" style="margin-bottom:0">Julio a septiembre, con total y promedio mensual</p></div>
       <div class="seg" id="vista" role="group" aria-label="Vista">
         <button type="button" data-v="gross" aria-pressed="true">Gross</button>
         <button type="button" data-v="trans" aria-pressed="false">Transacciones</button>
@@ -89,27 +96,28 @@
   </section>
 
   <footer class="foot">
-    <p>* Octubre en curso: cierres cargados al 12/10/2026.</p>
-    <p>Gross = comisión bruta de la oficina, expresada en guaraníes. Los cierres en dólares se convierten a TC 5.750 (el equivalente en US$ va debajo de cada indicador). Julio a septiembre se cuentan por fecha de cobro. No incluye un cierre de junio (₲ 1,3 M) cobrado en julio que estaba fuera de la tabla original.</p>
-    <p>Antigüedad de asesores calculada al 12/10/2026; algunos años de ingreso están por confirmar.</p>
+    <p><b>Gross</b> = suma de las comisiones cobradas por la oficina. <b>Volumen</b> = suma de los precios de cierre; no es gross.</p>
+    <p>Montos en US$; los guaraníes son equivalentes a TC 5.750. Julio a septiembre se cuentan por fecha de cobro. Octubre está en curso y no suma a los totales.</p>
+    <p>No incluye un cierre de junio (US$ 234) cobrado en julio que estaba fuera de la tabla original. Antigüedad de asesores al 12/10/2026; algunos años de ingreso están por confirmar.</p>
   </footer>
 </div>
 <div class="tip" id="tip" role="status"></div>
 
 <script>
-/* Datos agregados (sin nombres de clientes ni teléfonos) */
-/* Octubre: cierres al 12/10 (mes en curso). Montos en Gs convertidos a USD con TC 5.750 */
+/* Datos agregados (sin nombres de clientes ni teléfonos). Montos en US$. */
 const TC = 5750;
 const D = {
-  meses: ['Julio', 'Agosto', 'Septiembre', 'Octubre*'],
-  alq:  { n: [22, 0, 4, 2], g: [7049.25, 0, 2383.70, 1430000 / TC + 1300] },
-  ven:  { n: [5, 7, 6, 1],  g: [13756.19, 19186.71, 8147.57, 5500000 / TC] },
+  meses: ['Julio', 'Agosto', 'Septiembre'],
+  alq: { n: [22, 0, 8], g: [7049.25, 0, 3879.72],   p: [7578.14, 0, 6483.96] },
+  ven: { n: [5, 7, 7],  g: [13756.19, 19186.71, 13647.57], p: [407728, 453989, 403768.66] },
   lados: [
-    { k: 'Colocación',   n: [6, 0, 8, 1],  g: [8009.14, 0, 8947.27, 1300] },
-    { k: 'Capta/Coloca', n: [3, 5, 0, 0],  g: [1513.83, 14700.75, 0, 0] },
-    { k: 'Ambas puntas', n: [16, 0, 1, 1], g: [9845.00, 0, 399.00, 1430000 / TC] },
-    { k: 'Captación',    n: [2, 2, 1, 1],  g: [1437.47, 4485.96, 1185.00, 5500000 / TC] }
+    { k: 'Colocación',   n: [6, 0, 11], g: [8009.14, 0, 10196.74] },
+    { k: 'Capta/Coloca', n: [3, 5, 1],  g: [1513.83, 14700.75, 246.55] },
+    { k: 'Ambas puntas', n: [16, 0, 2], g: [9845.00, 0, 5899.00] },
+    { k: 'Captación',    n: [2, 2, 1],  g: [1437.47, 4485.96, 1185.00] }
   ],
+  /* Octubre al 12/10: 2 cierres en Gs (convertidos a TC) y 1 en US$ */
+  oct: { alqN: 2, venN: 1, alqG: 1430000 / TC + 1300, venG: 5500000 / TC, venP: 220000000 / TC },
   /* Asesores por antigüedad al 12/10/2026 (años de ingreso por confirmar) */
   equipo: [
     { k: 'Nuevos', d: 'menos de 6 meses', n: 10, c: 'var(--alq)' },
@@ -118,23 +126,21 @@ const D = {
   ]
 };
 const PERIODOS = {
-  todo: { idx: [0, 1, 2, 3], label: 'julio a octubre*', eyebrow: 'Julio – octubre 2026' },
+  todo: { idx: [0, 1, 2], label: 'julio a septiembre', eyebrow: 'Julio – septiembre 2026' },
   jul:  { idx: [0], label: 'julio', eyebrow: 'Julio 2026' },
   ago:  { idx: [1], label: 'agosto', eyebrow: 'Agosto 2026' },
-  sep:  { idx: [2], label: 'septiembre', eyebrow: 'Septiembre 2026 · último mes cerrado' },
-  oct:  { idx: [3], label: 'octubre* (en curso)', eyebrow: 'Octubre 2026 · en curso al 12/10' }
+  sep:  { idx: [2], label: 'septiembre', eyebrow: 'Septiembre 2026 · último mes cerrado' }
 };
 
 const sum = a => a.reduce((x, y) => x + y, 0);
 const pick = (arr, idx) => idx.map(i => arr[i]);
 const div = (a, b) => b ? a / b : 0;
-/* Moneda principal: guaraníes. Los datos están en USD y se convierten con TC */
 const fmtN = v => Math.round(v).toLocaleString('es-PY');
-const gs = v => '₲ ' + fmtN(v * TC);          // USD -> texto en Gs
-const gsRaw = v => '₲ ' + fmtN(v);            // valor ya en Gs
-const gsM = v => '₲ ' + (v / 1e6).toLocaleString('es-PY', { maximumFractionDigits: 1 }) + ' M';
-const dol = v => 'US$ ' + fmtN(v);
+const usd = v => 'US$ ' + fmtN(v);
+const gs = v => '₲ ' + fmtN(v * TC);
+const gsM = v => '₲ ' + (v * TC / 1e6).toLocaleString('es-PY', { maximumFractionDigits: 1 }) + ' M';
 const pct = v => (v * 100).toFixed(1).replace('.', ',') + '%';
+const plural = (n, s, p) => n + ' ' + (n === 1 ? s : p);
 const $ = s => document.querySelector(s);
 const NS = 'http://www.w3.org/2000/svg';
 const el = (tag, attrs = {}, parent) => {
@@ -149,13 +155,14 @@ const twoFrames = fn => requestAnimationFrame(() => requestAnimationFrame(fn));
 function totales(idx) {
   const T = {
     alqN: sum(pick(D.alq.n, idx)), venN: sum(pick(D.ven.n, idx)),
-    alqG: sum(pick(D.alq.g, idx)), venG: sum(pick(D.ven.g, idx))
+    alqG: sum(pick(D.alq.g, idx)), venG: sum(pick(D.ven.g, idx)),
+    venP: sum(pick(D.ven.p, idx))
   };
   T.total = T.alqN + T.venN; T.gross = T.alqG + T.venG;
   T.avg = div(T.gross, T.total); T.avgAlq = div(T.alqG, T.alqN); T.avgVen = div(T.venG, T.venN);
   return T;
 }
-let T = totales([0, 1, 2, 3]);
+let T = totales([0, 1, 2]);
 
 /* ---- Tooltip ---- */
 const tip = $('#tip');
@@ -166,6 +173,19 @@ function showTip(e, html) {
   tip.style.top = (e.clientY + 16) + 'px';
 }
 const hideTip = () => tip.classList.remove('on');
+
+/* ---- Octubre (aparte, fijo) ---- */
+(function () {
+  const O = D.oct, n = O.alqN + O.venN, g = O.alqG + O.venG;
+  const items = [
+    ['Cierres', String(n), `${plural(O.alqN, 'alquiler', 'alquileres')} · ${plural(O.venN, 'venta', 'ventas')}`],
+    ['Gross total', usd(g), gs(g)],
+    ['Gross de ventas', usd(O.venG), gs(O.venG)],
+    ['Gross de alquileres', usd(O.alqG), gs(O.alqG)],
+    ['Volumen de ventas', usd(O.venP), gs(O.venP)]
+  ];
+  $('#octGrid').innerHTML = items.map(([k, v, s]) => `<div><small>${k}</small><b>${v}</b><span>${s}</span></div>`).join('');
+})();
 
 /* ---- Equipo (no depende del filtro) ---- */
 (function () {
@@ -185,7 +205,7 @@ const hideTip = () => tip.classList.remove('on');
 /* ---- Contadores animados (desde el valor actual al nuevo) ---- */
 function contadores() {
   document.querySelectorAll('[data-n]').forEach(n => {
-    const end = T[n.dataset.n], f = n.dataset.f === 'gs' ? gs : v => Math.round(v);
+    const end = T[n.dataset.n], f = n.dataset.f === 'usd' ? usd : v => Math.round(v);
     const start = Number(n.dataset.cur || 0); n.dataset.cur = end;
     if (reduce) { n.textContent = f(end); return; }
     const t0 = performance.now(), dur = 800;
@@ -212,9 +232,9 @@ function bar100(id, a, v, label) {
 }
 
 /* ---- Columnas apiladas por mes (los meses fuera del filtro quedan atenuados) ---- */
-function stacked(id, a, v, fmt, title, idx, tickFmt = fmt) {
+function stacked(id, a, v, fmt, title, idx, tickFmt = fmt, tipFmt = fmt) {
   const svg = $(id); svg.innerHTML = '';
-  const W = 520, H = 280, m = { l: 62, r: 8, t: 12, b: 28 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const W = 520, H = 280, m = { l: 62, r: 8, t: 14, b: 28 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   const tot = a.map((x, i) => x + v[i]);
   const rawMax = Math.max(...tot), mag = Math.pow(10, Math.floor(Math.log10(rawMax)));
@@ -234,7 +254,7 @@ function stacked(id, a, v, fmt, title, idx, tickFmt = fmt) {
       if (!val) return;
       const h = val / max * ih; y -= h;
       const r = el('rect', { x: cx - bw / 2, y, width: bw, height: h, rx: 4, class: 'seg', fill: `var(--${c})` }, g);
-      r.addEventListener('mousemove', e => showTip(e, `<b>${mes} · ${name}</b>${title}: ${fmt(val)}`));
+      r.addEventListener('mousemove', e => showTip(e, `<b>${mes} · ${name}</b>${title}: ${tipFmt(val)}`));
       r.addEventListener('mouseleave', hideTip);
     });
     el('text', { x: cx, y: H - 8, 'text-anchor': 'middle', class: off ? 'off' : '' }, svg).textContent = mes;
@@ -247,15 +267,15 @@ function lados(idx) {
   const svg = $('#cLados'); svg.innerHTML = '';
   const rows = D.lados.map(d => ({ k: d.k, n: sum(pick(d.n, idx)), g: sum(pick(d.g, idx)) }))
     .filter(d => d.n).sort((x, y) => y.g - x.g);
-  const W = 900, rowH = 46, m = { l: 120, r: 90, t: 6 }, H = m.t + rowH * rows.length + 6;
+  const W = 900, rowH = 46, m = { l: 120, r: 110, t: 6 }, H = m.t + rowH * rows.length + 6;
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   const max = Math.max(...rows.map(d => d.g)), iw = W - m.l - m.r;
   rows.forEach((d, i) => {
     const y = m.t + i * rowH, w = d.g / max * iw;
     el('text', { x: m.l - 12, y: y + 24, 'text-anchor': 'end' }, svg).textContent = d.k;
     const r = el('rect', { x: m.l, y: y + 6, width: w, height: 26, rx: 4, class: 'seg growx', fill: 'var(--gold)', style: `animation-delay:${i * .08}s` }, svg);
-    el('text', { x: m.l + w + 10, y: y + 24, class: 'val' }, svg).textContent = gs(d.g);
-    r.addEventListener('mousemove', e => showTip(e, `<b>${d.k}</b>${d.n} cierres · ${gs(d.g)}<br>Promedio ${gs(d.g / d.n)} · ${pct(div(d.g, T.gross))} del gross`));
+    el('text', { x: m.l + w + 10, y: y + 24, class: 'val' }, svg).textContent = usd(d.g);
+    r.addEventListener('mousemove', e => showTip(e, `<b>${d.k}</b>${plural(d.n, 'cierre', 'cierres')} · ${usd(d.g)} (${gs(d.g)})<br>Promedio ${usd(d.g / d.n)} · ${pct(div(d.g, T.gross))} del gross`));
     r.addEventListener('mouseleave', hideTip);
   });
 }
@@ -263,15 +283,18 @@ function lados(idx) {
 /* ---- Tabla (vista alternable) ---- */
 let vista = 'gross', sel = PERIODOS.todo.idx;
 function table() {
-  const g = vista === 'gross', f = g ? gs : String;
+  const g = vista === 'gross', f = g ? usd : v => (Math.round(v * 10) / 10).toLocaleString('es-PY');
   const A = g ? D.alq.g : D.alq.n, V = g ? D.ven.g : D.ven.n;
-  let h = `<thead><tr><th>Mes</th><th>Alquiler</th><th>Venta</th><th>Total</th>${g ? '<th>Promedio</th>' : ''}</tr></thead><tbody>`;
+  const cell = (v, sub) => `<td>${f(v)}${g && sub ? `<small>${gs(v)}</small>` : ''}</td>`;
+  let h = `<thead><tr><th>Mes</th><th>${g ? 'Gross alquileres' : 'Alquileres'}</th><th>${g ? 'Gross ventas' : 'Ventas'}</th><th>${g ? 'Gross total' : 'Total'}</th>${g ? '<th>Comisión prom.</th>' : ''}</tr></thead><tbody>`;
   sel.forEach(i => {
     const tn = D.alq.n[i] + D.ven.n[i];
-    h += `<tr><td>${D.meses[i]}</td><td>${f(A[i])}</td><td>${f(V[i])}</td><td>${f(A[i] + V[i])}</td>${g ? `<td>${gs(div(D.alq.g[i] + D.ven.g[i], tn))}</td>` : ''}</tr>`;
+    h += `<tr><td>${D.meses[i]}</td>${cell(A[i])}${cell(V[i])}${cell(A[i] + V[i], true)}${g ? `<td>${usd(div(D.alq.g[i] + D.ven.g[i], tn))}</td>` : ''}</tr>`;
   });
-  const sa = sum(pick(A, sel)), sv = sum(pick(V, sel));
-  h += `</tbody><tfoot><tr><td>Total</td><td>${f(sa)}</td><td>${f(sv)}</td><td>${f(sa + sv)}</td>${g ? `<td>${gs(T.avg)}</td>` : ''}</tr></tfoot>`;
+  const sa = sum(pick(A, sel)), sv = sum(pick(V, sel)), k = sel.length;
+  h += `</tbody><tfoot><tr><td>Total ${k > 1 ? 'jul–sep' : ''}</td>${cell(sa)}${cell(sv)}${cell(sa + sv, true)}${g ? `<td>${usd(T.avg)}</td>` : ''}</tr>`;
+  if (k > 1) h += `<tr class="avg"><td>Promedio mensual</td>${cell(sa / k)}${cell(sv / k)}${cell((sa + sv) / k, true)}${g ? '<td></td>' : ''}</tr>`;
+  h += '</tfoot>';
   $('#tbl').innerHTML = h;
 }
 document.querySelectorAll('#vista button').forEach(b => b.addEventListener('click', () => {
@@ -283,26 +306,25 @@ document.querySelectorAll('#vista button').forEach(b => b.addEventListener('clic
 function render(key) {
   const P = PERIODOS[key]; sel = P.idx; T = totales(sel);
   const ganaVenta = T.venG >= T.alqG, may = ganaVenta ? T.venG : T.alqG;
+  $('#eyebrow').textContent = P.eyebrow;
   $('#heroLead').textContent = ganaVenta ? 'Las ventas son el' : 'Los alquileres son el';
   $('#heroPct').textContent = pct(div(may, T.gross));
   $('#heroTxt').innerHTML =
-    `Con <strong>${T.venN} ${T.venN === 1 ? "venta" : "ventas"}</strong> (${pct(div(T.venN, T.total))} de los cierres) se cobraron <strong>${gs(T.venG)}</strong>. ` +
-    `${T.alqN === 1 ? "El" : "Los"} <strong>${T.alqN} ${T.alqN === 1 ? "alquiler" : "alquileres"}</strong> ${T.alqN === 1 ? "aportó" : "aportaron"} ${gs(T.alqG)}. Gross total del período: <strong>${gs(T.gross)}</strong>.`;
-  $("#sTotal").textContent = P.label;
-  $("#eyebrow").textContent = P.eyebrow;
-  $('#sAlq').textContent = pct(div(T.alqN, T.total)) + ' de los cierres';
-  $('#sVen').textContent = pct(div(T.venN, T.total)) + ' de los cierres';
-  $('#sAvgAlq').textContent = '≈ ' + dol(T.avgAlq) + ' · ' + gs(T.alqG) + ' en total';
-  $('#sAvgVen').textContent = '≈ ' + dol(T.avgVen) + ' · ' + gs(T.venG) + ' en total';
-  $('#sGross').textContent = '≈ ' + dol(T.gross) + ' · TC ' + fmtN(TC);
-  $('#sAvg').textContent = '≈ ' + dol(T.avg) + ' por cierre';
-  $('#winner').textContent = ganaVenta ? 'Venta' : 'Alquiler';
-  const menor = Math.min(T.venG, T.alqG);
-  $('#diff').textContent = 'por ' + gs(Math.abs(T.venG - T.alqG)) + (menor ? ' (' + (may / menor).toFixed(1).replace('.', ',') + '× más)' : '');
+    `Gross total (comisiones) de ${P.label}: <strong>${usd(T.gross)}</strong> <span class="gs">${gs(T.gross)}</span>. ` +
+    `${plural(T.venN, 'venta', 'ventas')} dejaron <strong>${usd(T.venG)}</strong> y ${plural(T.alqN, 'alquiler', 'alquileres')} <strong>${usd(T.alqG)}</strong>. ` +
+    `El gross es <strong>${div(T.venG, T.gross) >= .6 ? 'mayormente de ventas' : div(T.venG, T.gross) <= .4 ? 'mayormente de alquileres' : 'mixto'}</strong>.`;
+  $('#sTotal').textContent = `${plural(T.alqN, 'alquiler', 'alquileres')} · ${plural(T.venN, 'venta', 'ventas')}`;
+  $('#sGross').textContent = gs(T.gross);
+  $('#sVenG').textContent = `${gs(T.venG)} · ${pct(div(T.venG, T.gross))}`;
+  $('#sAlqG').textContent = `${gs(T.alqG)} · ${pct(div(T.alqG, T.gross))}`;
+  $('#sAvg').textContent = gs(T.avg);
+  $('#sAvgVen').textContent = gs(T.avgVen);
+  $('#sAvgAlq').textContent = gs(T.avgAlq);
+  $('#sVol').textContent = 'precio de cierre, no es gross · ' + gsM(T.venP);
   contadores();
-  bar100('#bTrans', T.alqN, T.venN, x => x + ' cierres');
-  bar100('#bGross', T.alqG, T.venG, gs);
-  stacked('#cGross', D.alq.g.map(x => x * TC), D.ven.g.map(x => x * TC), gsRaw, 'Gross', sel, gsM);
+  bar100('#bTrans', T.alqN, T.venN, x => plural(x, 'cierre', 'cierres'));
+  bar100('#bGross', T.alqG, T.venG, x => usd(x) + ' · ' + gs(x));
+  stacked('#cGross', D.alq.g, D.ven.g, usd, 'Gross', sel, v => 'US$ ' + (v / 1000).toLocaleString('es-PY') + ' k', v => usd(v) + '<br>' + gs(v));
   stacked('#cTrans', D.alq.n, D.ven.n, v => String(v), 'Cierres', sel);
   lados(sel);
   table();
