@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cierres Nova Jul–Sep</title>
+<meta name="description" content="Reporte de cierres de Century 21 Nova, julio a septiembre 2026, con octubre en curso aparte: gross de ventas y alquileres, volumen y promedios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap">
+<style>
+/* Reporte de cierres · Century 21 Nova — hoja de estilos
+   Tema: dorado sobre negro petróleo */
+:root {
+  color-scheme: dark;
+  --bg: #071214;            /* negro petróleo */
+  --bg-glow-1: rgba(0, 160, 170, .14);
+  --bg-glow-2: rgba(190, 175, 135, .16);
+  --surface: #0e1d20;
+  --surface-2: #15292d;
+  --border: rgba(190, 175, 135, .16);
+  --text: #f3efe4;
+  --text-2: #c9c2ae;
+  --text-3: #8f8a7a;
+  --grid: rgba(243, 239, 228, .07);
+  --gold: #beaf87;          /* dorado Century 21 */
+  --gold-hi: #e2cf9a;
+  --gold-lo: #8f7a45;
+  --alq: #00a0aa;           /* alquiler  — petróleo */
+  --ven: #b08a33;           /* venta     — dorado   */
+  --aqua: #8c7ae0;          /* 3.ª serie (equipo)   */
+  --capt: rgba(190, 175, 135, .28); /* captaciones (fondo de la barra) */
+  --on-mark: #071214;
+  --shadow: 0 1px 2px rgba(0,0,0,.5), 0 18px 44px -18px rgba(0,0,0,.85);
+  --radius: 18px;
+  --font: "Montserrat", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background:
+    radial-gradient(900px 520px at 6% -10%, var(--bg-glow-1), transparent 60%),
+    radial-gradient(800px 520px at 100% 0%, var(--bg-glow-2), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {               /* filete dorado superior */
+  content: ""; position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 5;
+  background: linear-gradient(90deg, var(--gold-lo), var(--gold-hi), var(--gold-lo));
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding: 32px 16px 64px; }
+
+/* ---------- Cabecera / logo ---------- */
+.top {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+}
+.logo-c21 { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo-c21 .word {
+  font-weight: 800; font-size: clamp(18px, 3vw, 24px); letter-spacing: .14em; line-height: 1;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold) 55%, var(--gold-lo));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.logo-c21 .bar { width: 1px; align-self: stretch; background: var(--gold); opacity: .6; }
+.logo-c21 .nova {
+  font-weight: 300; font-size: clamp(18px, 3vw, 24px); letter-spacing: .32em; color: var(--text); line-height: 1;
+}
+.top .meta { font-size: 12px; color: var(--text-3); text-align: right; letter-spacing: .04em; }
+.top .meta b { display: block; color: var(--gold); font-weight: 600; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; }
+.seg button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ---------- Hero ---------- */
+.hero { margin-bottom: 28px; }
+.eyebrow { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.hero h1 {
+  font-size: clamp(30px, 6vw, 56px); line-height: 1.05; letter-spacing: -.03em; margin: 10px 0 14px; font-weight: 800;
+}
+.grad {
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold) 60%, var(--gold-lo));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero p { color: var(--text-2); max-width: 640px; font-size: 16px; }
+.hero strong { color: var(--text); }
+
+/* ---------- KPIs ---------- */
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 14px; }
+.kpi {
+  position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px 18px 16px; box-shadow: var(--shadow);
+  transition: transform .2s; animation: rise .6s both;
+}
+.kpi:hover { transform: translateY(-3px); border-color: rgba(190, 175, 135, .45); }
+.kpi::after {
+  content: ""; position: absolute; inset: auto -20% -60% auto; width: 140px; height: 140px; border-radius: 50%;
+  background: var(--accent, var(--gold)); opacity: .12; filter: blur(8px);
+}
+.kpi::before {
+  content: ""; position: absolute; left: 18px; right: 18px; top: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent, var(--gold)), transparent);
+}
+.kpi small { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.kpi .v { font-size: clamp(22px, 2.3vw, 27px); white-space: nowrap; font-weight: 800; letter-spacing: -.02em; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.kpi .s { font-size: 12.5px; color: var(--text-2); margin-top: 2px; }
+.kpi.alq { --accent: var(--alq); }
+.kpi.ven { --accent: var(--ven); }
+.kpi:nth-child(2) { animation-delay: .06s; } .kpi:nth-child(3) { animation-delay: .12s; } .kpi:nth-child(4) { animation-delay: .18s; }
+.kpis.second { margin-bottom: 28px; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Versus ---------- */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+.card h2 { font-size: 16px; letter-spacing: .01em; }
+.card h2 span { color: var(--gold-hi); }
+.card .sub { font-size: 13px; color: var(--text-3); margin: 2px 0 16px; }
+.versus { margin-bottom: 14px; }
+.vs-row { display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 14px; margin: 12px 0; }
+.vs-row > span { font-size: 13px; color: var(--text-2); font-weight: 600; }
+.bar100 { display: flex; height: 38px; border-radius: 10px; overflow: hidden; background: var(--surface-2); }
+.bar100 i {
+  display: flex; align-items: center; padding-left: 12px; font-style: normal; font-size: 13px; font-weight: 700; color: var(--on-mark);
+  width: 0; transition: width 1.1s cubic-bezier(.2,.8,.2,1); white-space: nowrap; overflow: hidden;
+}
+.bar100 i + i { border-left: 2px solid var(--surface); }
+.bar100 .a { background: var(--alq); } .bar100 .v { background: var(--ven); }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 14px; font-size: 13px; color: var(--text-2); }
+.legend span::before {
+  content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 7px; background: var(--c);
+}
+
+/* ---------- Gráficas ---------- */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.chart { width: 100%; height: auto; display: block; overflow: visible; }
+.chart text { font-family: var(--font); fill: var(--text-2); font-size: 12px; }
+.chart .grid { stroke: var(--grid); stroke-width: 1; }
+.chart .seg { stroke: var(--surface); stroke-width: 2; transition: opacity .15s, filter .15s; cursor: pointer; }
+.chart .seg:hover { filter: brightness(1.12); }
+.chart .val { fill: var(--text); font-weight: 700; }
+.grow { transform-box: fill-box; transform-origin: bottom; animation: grow .9s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.growx { transform-box: fill-box; transform-origin: left; animation: growx .9s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes growx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.tip {
+  position: fixed; z-index: 10; pointer-events: none; opacity: 0; transform: translateY(4px);
+  transition: opacity .12s, transform .12s; background: #f3efe4; color: #071214; border-top: 2px solid var(--gold);
+  padding: 8px 12px; border-radius: 10px; font-size: 12.5px; line-height: 1.45; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.tip.on { opacity: 1; transform: none; }
+.tip b { display: block; font-size: 13px; }
+
+/* ---------- Tabla ---------- */
+.head-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.seg { display: inline-flex; flex-wrap: wrap; background: var(--surface-2); border-radius: 999px; padding: 3px; }
+.seg button {
+  font: inherit; font-size: 12.5px; border: 0; background: transparent; color: var(--text-2);
+  padding: 6px 14px; border-radius: 999px; cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--gold); color: var(--on-mark); box-shadow: 0 1px 4px rgba(0,0,0,.3); font-weight: 700; }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+th { text-align: right; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); padding: 8px 10px; border-bottom: 1px solid var(--border); }
+td { text-align: right; padding: 10px; border-bottom: 1px solid var(--border); }
+th:first-child, td:first-child { text-align: left; font-weight: 600; }
+tfoot td { font-weight: 800; border-bottom: 0; color: var(--gold-hi); }
+[hidden] { display: none !important; }
+
+.foot { margin-top: 28px; font-size: 12.5px; color: var(--text-3); }
+.foot p + p { margin-top: 6px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .grid2 { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .vs-row { grid-template-columns: 1fr; gap: 4px; }
+  .card { padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ---------- Equipo ---------- */
+.bar100.team i { justify-content: center; padding-left: 0; }
+.team-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+.team-item { border-left: 4px solid var(--c); padding: 4px 0 4px 12px; }
+.team-item b { display: block; font-size: 28px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
+.team-item span { display: block; font-size: 14px; font-weight: 600; }
+.team-item small { font-size: 12.5px; color: var(--text-3); }
+@media (max-width: 520px) { .team-list { grid-template-columns: 1fr; } }
+
+/* ---------- Filtro de período ---------- */
+.filtro {
+  position: sticky; top: 3px; z-index: 4; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin: 0 0 18px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 999px;
+  background: rgba(7, 18, 20, .82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  width: fit-content; max-width: 100%;
+}
+.filtro > span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.chart .off { opacity: .22; transition: opacity .2s; }
+@media (max-width: 520px) { .filtro { border-radius: 16px; } .seg button { padding: 6px 10px; } }
+
+/* ---------- Gross, volumen y guaraníes ---------- */
+.kpi.gold { --accent: var(--gold); border-color: rgba(190, 175, 135, .38); }
+.kpi.gold .v { color: var(--gold-hi); }
+.kpi.vol { --accent: var(--text-3); }
+.kpi.vol small { color: var(--text-2); }
+.hero .gs { color: var(--text-3); font-size: .86em; }
+td small { display: block; font-size: 11px; color: var(--text-3); font-weight: 400; }
+tfoot tr.avg td { color: var(--text-2); font-weight: 600; border-top: 1px dashed var(--border); }
+
+/* ---------- Octubre (aparte) ---------- */
+.card.oct { margin-bottom: 14px; border-style: dashed; border-color: rgba(190, 175, 135, .35); background: linear-gradient(180deg, rgba(190,175,135,.06), transparent 70%), var(--surface); }
+.tag { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--on-mark); background: var(--gold); vertical-align: middle; }
+.oct-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.oct-grid > div { padding: 10px 0 2px 12px; border-left: 2px solid var(--border); }
+.oct-grid small { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.oct-grid b { display: block; font-size: 20px; font-weight: 800; margin-top: 4px; white-space: nowrap; }
+.oct-grid span { font-size: 12px; color: var(--text-3); }
+@media (max-width: 860px) { .oct-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- Cartera y captaciones ---------- */
+.card.capt { margin-bottom: 14px; }
+.card.capt .oct-grid { margin-bottom: 22px; }
+.capt-h { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.card.capt .legend { margin: 0 0 10px; }
+
+/* ---------- Botón de descarga ---------- */
+.btn-dl {
+  display: inline-block; margin-top: 8px; padding: 6px 14px; border-radius: 999px;
+  font-size: 12px; font-weight: 700; letter-spacing: .04em; text-decoration: none;
+  color: var(--on-mark); background: var(--gold); transition: background .15s, transform .15s;
+}
+.btn-dl:hover { background: var(--gold-hi); transform: translateY(-1px); }
+.btn-dl:focus-visible { outline: 2px solid var(--gold-hi); outline-offset: 2px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="logo-c21" role="img" aria-label="Century 21 Nova">
+      <span class="word">CENTURY 21</span><span class="bar"></span><span class="nova">NOVA</span>
+    </div>
+    <div class="meta"><b>Reporte de cierres</b>Jul – Sep 2026 · octubre en curso
+      
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow" id="eyebrow">Julio – septiembre 2026</div>
+    <h1><span id="heroLead">Las ventas son el</span> <span class="grad" id="heroPct">—</span> del gross</h1>
+    <p id="heroTxt"></p>
+  </section>
+
+  <nav class="filtro" aria-label="Filtrar por mes">
+    <span>Período</span>
+    <div class="seg" id="periodo" role="group" aria-label="Período">
+      <button type="button" data-p="todo" aria-pressed="true">Jul – Sep</button>
+      <button type="button" data-p="jul" aria-pressed="false">Julio</button>
+      <button type="button" data-p="ago" aria-pressed="false">Agosto</button>
+      <button type="button" data-p="sep" aria-pressed="false">Septiembre</button>
+    </div>
+  </nav>
+
+  <section class="kpis" aria-label="Gross">
+    <div class="kpi"><small>Transacciones cerradas</small><div class="v" data-n="total" data-f="int">0</div><div class="s" id="sTotal"></div></div>
+    <div class="kpi gold"><small>Gross total · comisiones</small><div class="v" data-n="gross" data-f="usd">0</div><div class="s" id="sGross"></div></div>
+    <div class="kpi ven"><small>Gross de ventas</small><div class="v" data-n="venG" data-f="usd">0</div><div class="s" id="sVenG"></div></div>
+    <div class="kpi alq"><small>Gross de alquileres</small><div class="v" data-n="alqG" data-f="usd">0</div><div class="s" id="sAlqG"></div></div>
+  </section>
+  <section class="kpis second" aria-label="Promedios y volumen">
+    <div class="kpi"><small>Comisión promedio por operación</small><div class="v" data-n="avg" data-f="usd">0</div><div class="s" id="sAvg"></div></div>
+    <div class="kpi ven"><small>Promedio por venta</small><div class="v" data-n="avgVen" data-f="usd">0</div><div class="s" id="sAvgVen"></div></div>
+    <div class="kpi alq"><small>Promedio por alquiler</small><div class="v" data-n="avgAlq" data-f="usd">0</div><div class="s" id="sAvgAlq"></div></div>
+    <div class="kpi vol"><small>Volumen de ventas</small><div class="v" data-n="venP" data-f="usd">0</div><div class="s" id="sVol"></div></div>
+  </section>
+
+  <section class="card oct" aria-label="Octubre en curso">
+    <div class="oct-head">
+      <div><h2>Octubre <span class="tag">en curso · al 12/10</span></h2>
+      <p class="sub">Va aparte: no suma a los totales de julio a septiembre.</p></div>
+    </div>
+    <div class="oct-grid" id="octGrid"></div>
+  </section>
+
+  <section class="card capt" aria-label="Cartera y captaciones">
+    <h2>Cartera y captaciones</h2>
+    <p class="sub">Según el sistema C21 · captaciones de enero al 12/10/2026</p>
+    <div class="oct-grid" id="cartGrid"></div>
+    <h3 class="capt-h">Efectividad de captaciones por producto</h3>
+    <div class="legend"><span style="--c:var(--capt)">Captaciones</span><span style="--c:var(--gold)">Cerradas</span></div>
+    <svg class="chart" id="cCapt" role="img" aria-label="Captaciones y cerradas por tipo de producto"></svg>
+  </section>
+
+  <section class="card versus">
+    <h2>Equipo: <span id="nEquipo">19</span> asesores</h2>
+    <p class="sub">Por antigüedad en la oficina</p>
+    <div class="bar100 team" id="bEquipo"></div>
+    <div class="team-list" id="equipo"></div>
+  </section>
+
+  <section class="card versus">
+    <h2>Alquiler vs venta</h2>
+    <p class="sub">Cuántos cierres son de cada tipo y cuánto gross (comisión) deja cada uno.</p>
+    <div class="vs-row"><span>% de transacciones</span><div class="bar100" id="bTrans"></div></div>
+    <div class="vs-row"><span>% del gross</span><div class="bar100" id="bGross"></div></div>
+    <div class="legend"><span style="--c:var(--alq)">Alquiler</span><span style="--c:var(--ven)">Venta</span></div>
+  </section>
+
+  <section class="grid2">
+    <div class="card"><h2>Gross por mes</h2><p class="sub">Comisiones cobradas en US$, por mes de cobro</p><svg class="chart" id="cGross" role="img" aria-label="Gross por mes, alquiler y venta"></svg></div>
+    <div class="card"><h2>Transacciones por mes</h2><p class="sub">Cantidad de cierres</p><svg class="chart" id="cTrans" role="img" aria-label="Transacciones por mes, alquiler y venta"></svg></div>
+  </section>
+
+  <section class="card" style="margin-bottom:14px">
+    <h2>Gross por tipo de punta</h2>
+    <p class="sub">Quién trajo el negocio: solo captación, solo colocación o ambas puntas.</p>
+    <svg class="chart" id="cLados" role="img" aria-label="Gross por tipo de punta"></svg>
+  </section>
+
+  <section class="card">
+    <div class="head-row">
+      <div><h2>Detalle por mes</h2><p class="sub" style="margin-bottom:0">Julio a septiembre, con total y promedio mensual</p></div>
+      <div class="seg" id="vista" role="group" aria-label="Vista">
+        <button type="button" data-v="gross" aria-pressed="true">Gross</button>
+        <button type="button" data-v="trans" aria-pressed="false">Transacciones</button>
+      </div>
+    </div>
+    <div class="scroll"><table id="tbl"></table></div>
+  </section>
+
+  <footer class="foot">
+    <p><b>Gross</b> = suma de las comisiones cobradas por la oficina. <b>Volumen</b> = suma de los precios de cierre; no es gross.</p>
+    <p>Montos en US$; los guaraníes son equivalentes a TC 5.750. Julio a septiembre se cuentan por fecha de cobro. Octubre está en curso y no suma a los totales.</p>
+    <p>No incluye un cierre de junio (US$ 234) cobrado en julio que estaba fuera de la tabla original. Antigüedad de asesores al 12/10/2026; algunos años de ingreso están por confirmar.</p>
+  </footer>
+</div>
+<div class="tip" id="tip" role="status"></div>
+
+<script>
+/* Datos agregados (sin nombres de clientes ni teléfonos). Montos en US$. */
+const TC = 5750;
+const D = {
+  meses: ['Julio', 'Agosto', 'Septiembre'],
+  alq: { n: [22, 0, 8], g: [7049.25, 0, 3879.72],   p: [7578.14, 0, 6483.96] },
+  ven: { n: [5, 7, 7],  g: [13756.19, 19186.71, 13647.57], p: [407728, 453989, 403768.66] },
+  lados: [
+    /* "Capta/Coloca" de la planilla se cuenta como Ambas puntas (mismo concepto) */
+    { k: 'Ambas puntas', n: [19, 5, 3], g: [9845.00 + 1513.83, 14700.75, 5899.00 + 246.55] },
+    { k: 'Colocación',   n: [6, 0, 11], g: [8009.14, 0, 10196.74] },
+    { k: 'Captación',    n: [2, 2, 1],  g: [1437.47, 4485.96, 1185.00] }
+  ],
+  /* Octubre al 12/10: 2 cierres en Gs (convertidos a TC) y 1 en US$ */
+  oct: { alqN: 2, venN: 1, alqG: 1430000 / TC + 1300, venG: 5500000 / TC, venP: 220000000 / TC },
+  /* Cartera y captaciones: dashboard del sistema C21 (12/10/2026) */
+  cartera: { promocion: 288, activos: 121, vencidos: 163 },
+  captaciones: [
+    { k: 'Departamento en pozo', c: 68, x: 10 },
+    { k: 'Terreno', c: 64, x: 1 },
+    { k: 'Departamento', c: 63, x: 48 },
+    { k: 'Casa', c: 45, x: 2 },
+    { k: 'Casa dúplex', c: 9, x: 2 },
+    { k: 'Casa en condominio', c: 6, x: 2 },
+    { k: 'Quinta', c: 5, x: 0 },
+    { k: 'Local', c: 4, x: 1 },
+    { k: 'Propiedad agrícola', c: 4, x: 0 },
+    { k: 'Nave', c: 3, x: 1 },
+    { k: 'Bodega', c: 1, x: 0 },
+    { k: 'Inmueble productivo', c: 1, x: 0 }
+  ],
+  /* Asesores por antigüedad al 12/10/2026 (años de ingreso por confirmar) */
+  equipo: [
+    { k: 'Nuevos', d: 'menos de 6 meses', n: 10, c: 'var(--alq)' },
+    { k: 'Intermedios', d: '6 a 12 meses', n: 7, c: 'var(--ven)' },
+    { k: 'Consolidados', d: '12 meses o más', n: 2, c: 'var(--aqua)' }
+  ]
+};
+const PERIODOS = {
+  todo: { idx: [0, 1, 2], label: 'julio a septiembre', eyebrow: 'Julio – septiembre 2026' },
+  jul:  { idx: [0], label: 'julio', eyebrow: 'Julio 2026' },
+  ago:  { idx: [1], label: 'agosto', eyebrow: 'Agosto 2026' },
+  sep:  { idx: [2], label: 'septiembre', eyebrow: 'Septiembre 2026 · último mes cerrado' }
+};
+
+const sum = a => a.reduce((x, y) => x + y, 0);
+const pick = (arr, idx) => idx.map(i => arr[i]);
+const div = (a, b) => b ? a / b : 0;
+const fmtN = v => Math.round(v).toLocaleString('es-PY');
+const usd = v => 'US$ ' + fmtN(v);
+const gs = v => '₲ ' + fmtN(v * TC);
+const gsM = v => '₲ ' + (v * TC / 1e6).toLocaleString('es-PY', { maximumFractionDigits: 1 }) + ' M';
+const pct = v => (v * 100).toFixed(1).replace('.', ',') + '%';
+const plural = (n, s, p) => n + ' ' + (n === 1 ? s : p);
+const $ = s => document.querySelector(s);
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs = {}, parent) => {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+};
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const twoFrames = fn => requestAnimationFrame(() => requestAnimationFrame(fn));
+
+function totales(idx) {
+  const T = {
+    alqN: sum(pick(D.alq.n, idx)), venN: sum(pick(D.ven.n, idx)),
+    alqG: sum(pick(D.alq.g, idx)), venG: sum(pick(D.ven.g, idx)),
+    venP: sum(pick(D.ven.p, idx))
+  };
+  T.total = T.alqN + T.venN; T.gross = T.alqG + T.venG;
+  T.avg = div(T.gross, T.total); T.avgAlq = div(T.alqG, T.alqN); T.avgVen = div(T.venG, T.venN);
+  return T;
+}
+let T = totales([0, 1, 2]);
+
+/* ---- Tooltip ---- */
+const tip = $('#tip');
+function showTip(e, html) {
+  tip.innerHTML = html; tip.classList.add('on');
+  const w = tip.offsetWidth;
+  tip.style.left = Math.min(innerWidth - w - 8, Math.max(8, e.clientX + 14)) + 'px';
+  tip.style.top = (e.clientY + 16) + 'px';
+}
+const hideTip = () => tip.classList.remove('on');
+
+/* ---- Octubre (aparte, fijo) ---- */
+(function () {
+  const O = D.oct, n = O.alqN + O.venN, g = O.alqG + O.venG;
+  const items = [
+    ['Cierres', String(n), `${plural(O.alqN, 'alquiler', 'alquileres')} · ${plural(O.venN, 'venta', 'ventas')}`],
+    ['Gross total', usd(g), gs(g)],
+    ['Gross de ventas', usd(O.venG), gs(O.venG)],
+    ['Gross de alquileres', usd(O.alqG), gs(O.alqG)],
+    ['Volumen de ventas', usd(O.venP), gs(O.venP)]
+  ];
+  $('#octGrid').innerHTML = items.map(([k, v, s]) => `<div><small>${k}</small><b>${v}</b><span>${s}</span></div>`).join('');
+})();
+
+/* ---- Cartera y captaciones (no depende del filtro) ---- */
+(function () {
+  /* enero al 12/10/2026 = 9 meses y 12 días */
+  const MESES_CAPT = 9 + 12 / 31;
+  const C = D.cartera, tc = sum(D.captaciones.map(d => d.c)), tx = sum(D.captaciones.map(d => d.x));
+  const items = [
+    ['En promoción', fmtN(C.promocion), 'propiedades publicadas'],
+    ['Contratos activos', fmtN(C.activos), pct(div(C.activos, C.activos + C.vencidos)) + ' de los contratos'],
+    ['Contratos vencidos', fmtN(C.vencidos), 'para renovar o dar de baja'],
+    ['Captaciones', fmtN(tc), 'enero a hoy · ≈ ' + fmtN(tc / MESES_CAPT) + ' por mes'],
+    ['Cerradas', fmtN(tx), pct(div(tx, tc)) + ' de efectividad']
+  ];
+  $('#cartGrid').innerHTML = items.map(([k, v, s]) => `<div><small>${k}</small><b>${v}</b><span>${s}</span></div>`).join('');
+
+  const svg = $('#cCapt'), rows = D.captaciones, W = 900, rowH = 34, m = { l: 170, r: 150, t: 4 };
+  const H = m.t + rowH * rows.length + 4, iw = W - m.l - m.r, max = Math.max(...rows.map(d => d.c));
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  rows.forEach((d, i) => {
+    const y = m.t + i * rowH, wc = d.c / max * iw, wx = d.x / max * iw;
+    el('text', { x: m.l - 12, y: y + 21, 'text-anchor': 'end' }, svg).textContent = d.k;
+    const g = el('g', { class: 'growx', style: `animation-delay:${i * .04}s` }, svg);
+    el('rect', { x: m.l, y: y + 6, width: wc, height: 22, rx: 4, fill: 'var(--capt)' }, g);
+    if (d.x) el('rect', { x: m.l, y: y + 6, width: wx, height: 22, rx: 4, class: 'seg', fill: 'var(--gold)' }, g);
+    el('text', { x: m.l + wc + 10, y: y + 21, class: 'val' }, svg).textContent = `${d.x} de ${d.c} · ${pct(div(d.x, d.c))}`;
+    const hit = el('rect', { x: m.l, y: y + 2, width: iw, height: rowH - 4, fill: 'transparent' }, svg);
+    hit.addEventListener('mousemove', e => showTip(e, `<b>${d.k}</b>${plural(d.c, 'captación', 'captaciones')} · ${plural(d.x, 'cerrada', 'cerradas')}<br>Efectividad ${pct(div(d.x, d.c))}`));
+    hit.addEventListener('mouseleave', hideTip);
+  });
+})();
+
+/* ---- Equipo (no depende del filtro) ---- */
+(function () {
+  const tot = sum(D.equipo.map(e => e.n)), bar = $('#bEquipo'), list = $('#equipo');
+  $('#nEquipo').textContent = tot;
+  D.equipo.forEach(e => {
+    const i = document.createElement('i'); i.style.background = e.c; i.textContent = e.n;
+    i.title = `${e.k} (${e.d}): ${e.n} asesores`;
+    bar.appendChild(i);
+    twoFrames(() => { i.style.width = (e.n / tot * 100) + '%'; });
+    const li = document.createElement('div'); li.className = 'team-item'; li.style.setProperty('--c', e.c);
+    li.innerHTML = `<b>${e.n}</b><span>${e.k}</span><small>${e.d} · ${pct(e.n / tot)}</small>`;
+    list.appendChild(li);
+  });
+})();
+
+/* ---- Contadores animados (desde el valor actual al nuevo) ---- */
+function contadores() {
+  document.querySelectorAll('[data-n]').forEach(n => {
+    const end = T[n.dataset.n], f = n.dataset.f === 'usd' ? usd : v => Math.round(v);
+    const start = Number(n.dataset.cur || 0); n.dataset.cur = end;
+    if (reduce) { n.textContent = f(end); return; }
+    const t0 = performance.now(), dur = 800;
+    const tick = t => {
+      const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      n.textContent = f(start + (end - start) * e);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}
+
+/* ---- Barras 100% ---- */
+function bar100(id, a, v, label) {
+  const box = $(id), tot = a + v;
+  if (!box.children.length) {
+    ['a', 'v'].forEach(c => { const i = document.createElement('i'); i.className = c; box.appendChild(i); });
+  }
+  [[box.children[0], a, 'Alquiler: '], [box.children[1], v, 'Venta: ']].forEach(([i, x, name]) => {
+    i.textContent = x ? pct(div(x, tot)) : '';
+    i.title = name + label(x);
+    twoFrames(() => { i.style.width = (div(x, tot) * 100) + '%'; });
+  });
+}
+
+/* ---- Columnas apiladas por mes (los meses fuera del filtro quedan atenuados) ---- */
+function stacked(id, a, v, fmt, title, idx, tickFmt = fmt, tipFmt = fmt) {
+  const svg = $(id); svg.innerHTML = '';
+  const W = 520, H = 280, m = { l: 62, r: 8, t: 14, b: 28 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const tot = a.map((x, i) => x + v[i]);
+  const rawMax = Math.max(...tot), mag = Math.pow(10, Math.floor(Math.log10(rawMax)));
+  const step = mag / (rawMax / mag > 5 ? 1 : 2), max = Math.ceil(rawMax / step) * step;
+  for (let t = 0; t <= max + 1e-9; t += step) {
+    const y = m.t + ih - t / max * ih;
+    el('line', { x1: m.l, x2: W - m.r, y1: y, y2: y, class: 'grid' }, svg);
+    el('text', { x: m.l - 8, y: y + 4, 'text-anchor': 'end' }, svg).textContent = tickFmt(t);
+  }
+  const cols = D.meses.length, bw = Math.min(90, iw / cols * .5);
+  D.meses.forEach((mes, i) => {
+    const off = !idx.includes(i);
+    const cx = m.l + iw / cols * (i + .5);
+    const g = el('g', { class: 'grow' + (off ? ' off' : ''), style: `animation-delay:${i * .1}s` }, svg);
+    let y = m.t + ih;
+    [[a[i], 'alq', 'Alquiler'], [v[i], 'ven', 'Venta']].forEach(([val, c, name]) => {
+      if (!val) return;
+      const h = val / max * ih; y -= h;
+      const r = el('rect', { x: cx - bw / 2, y, width: bw, height: h, rx: 4, class: 'seg', fill: `var(--${c})` }, g);
+      r.addEventListener('mousemove', e => showTip(e, `<b>${mes} · ${name}</b>${title}: ${tipFmt(val)}`));
+      r.addEventListener('mouseleave', hideTip);
+    });
+    el('text', { x: cx, y: H - 8, 'text-anchor': 'middle', class: off ? 'off' : '' }, svg).textContent = mes;
+    el('text', { x: cx, y: y - 6, 'text-anchor': 'middle', class: 'val' + (off ? ' off' : '') }, svg).textContent = fmt(tot[i]);
+  });
+}
+
+/* ---- Barras horizontales: lados ---- */
+function lados(idx) {
+  const svg = $('#cLados'); svg.innerHTML = '';
+  const rows = D.lados.map(d => ({ k: d.k, n: sum(pick(d.n, idx)), g: sum(pick(d.g, idx)) }))
+    .filter(d => d.n).sort((x, y) => y.g - x.g);
+  const W = 900, rowH = 46, m = { l: 120, r: 110, t: 6 }, H = m.t + rowH * rows.length + 6;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const max = Math.max(...rows.map(d => d.g)), iw = W - m.l - m.r;
+  rows.forEach((d, i) => {
+    const y = m.t + i * rowH, w = d.g / max * iw;
+    el('text', { x: m.l - 12, y: y + 24, 'text-anchor': 'end' }, svg).textContent = d.k;
+    const r = el('rect', { x: m.l, y: y + 6, width: w, height: 26, rx: 4, class: 'seg growx', fill: 'var(--gold)', style: `animation-delay:${i * .08}s` }, svg);
+    el('text', { x: m.l + w + 10, y: y + 24, class: 'val' }, svg).textContent = usd(d.g);
+    r.addEventListener('mousemove', e => showTip(e, `<b>${d.k}</b>${plural(d.n, 'cierre', 'cierres')} · ${usd(d.g)} (${gs(d.g)})<br>Promedio ${usd(d.g / d.n)} · ${pct(div(d.g, T.gross))} del gross`));
+    r.addEventListener('mouseleave', hideTip);
+  });
+}
+
+/* ---- Tabla (vista alternable) ---- */
+let vista = 'gross', sel = PERIODOS.todo.idx;
+function table() {
+  const g = vista === 'gross', f = g ? usd : v => (Math.round(v * 10) / 10).toLocaleString('es-PY');
+  const A = g ? D.alq.g : D.alq.n, V = g ? D.ven.g : D.ven.n;
+  const cell = (v, sub) => `<td>${f(v)}${g && sub ? `<small>${gs(v)}</small>` : ''}</td>`;
+  let h = `<thead><tr><th>Mes</th><th>${g ? 'Gross alquileres' : 'Alquileres'}</th><th>${g ? 'Gross ventas' : 'Ventas'}</th><th>${g ? 'Gross total' : 'Total'}</th>${g ? '<th>Comisión prom.</th>' : ''}</tr></thead><tbody>`;
+  sel.forEach(i => {
+    const tn = D.alq.n[i] + D.ven.n[i];
+    h += `<tr><td>${D.meses[i]}</td>${cell(A[i])}${cell(V[i])}${cell(A[i] + V[i], true)}${g ? `<td>${usd(div(D.alq.g[i] + D.ven.g[i], tn))}</td>` : ''}</tr>`;
+  });
+  const sa = sum(pick(A, sel)), sv = sum(pick(V, sel)), k = sel.length;
+  h += `</tbody><tfoot><tr><td>Total ${k > 1 ? 'jul–sep' : ''}</td>${cell(sa)}${cell(sv)}${cell(sa + sv, true)}${g ? `<td>${usd(T.avg)}</td>` : ''}</tr>`;
+  if (k > 1) h += `<tr class="avg"><td>Promedio mensual</td>${cell(sa / k)}${cell(sv / k)}${cell((sa + sv) / k, true)}${g ? '<td></td>' : ''}</tr>`;
+  h += '</tfoot>';
+  $('#tbl').innerHTML = h;
+}
+document.querySelectorAll('#vista button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#vista button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  vista = b.dataset.v; table();
+}));
+
+/* ---- Render según período ---- */
+function render(key) {
+  const P = PERIODOS[key]; sel = P.idx; T = totales(sel);
+  const ganaVenta = T.venG >= T.alqG, may = ganaVenta ? T.venG : T.alqG;
+  $('#eyebrow').textContent = P.eyebrow;
+  $('#heroLead').textContent = ganaVenta ? 'Las ventas son el' : 'Los alquileres son el';
+  $('#heroPct').textContent = pct(div(may, T.gross));
+  $('#heroTxt').innerHTML =
+    `Gross total (comisiones) de ${P.label}: <strong>${usd(T.gross)}</strong> <span class="gs">${gs(T.gross)}</span>. ` +
+    `${plural(T.venN, 'venta', 'ventas')} dejaron <strong>${usd(T.venG)}</strong> y ${plural(T.alqN, 'alquiler', 'alquileres')} <strong>${usd(T.alqG)}</strong>. ` +
+    `El gross es <strong>${div(T.venG, T.gross) >= .6 ? 'mayormente de ventas' : div(T.venG, T.gross) <= .4 ? 'mayormente de alquileres' : 'mixto'}</strong>.`;
+  $('#sTotal').textContent = `${plural(T.alqN, 'alquiler', 'alquileres')} · ${plural(T.venN, 'venta', 'ventas')}`;
+  $('#sGross').textContent = gs(T.gross);
+  $('#sVenG').textContent = `${gs(T.venG)} · ${pct(div(T.venG, T.gross))}`;
+  $('#sAlqG').textContent = `${gs(T.alqG)} · ${pct(div(T.alqG, T.gross))}`;
+  $('#sAvg').textContent = gs(T.avg);
+  $('#sAvgVen').textContent = gs(T.avgVen);
+  $('#sAvgAlq').textContent = gs(T.avgAlq);
+  $('#sVol').textContent = 'precio de cierre, no es gross · ' + gsM(T.venP);
+  contadores();
+  bar100('#bTrans', T.alqN, T.venN, x => plural(x, 'cierre', 'cierres'));
+  bar100('#bGross', T.alqG, T.venG, x => usd(x) + ' · ' + gs(x));
+  stacked('#cGross', D.alq.g, D.ven.g, usd, 'Gross', sel, v => 'US$ ' + (v / 1000).toLocaleString('es-PY') + ' k', v => usd(v) + '<br>' + gs(v));
+  stacked('#cTrans', D.alq.n, D.ven.n, v => String(v), 'Cierres', sel);
+  lados(sel);
+  table();
+}
+
+document.querySelectorAll('#periodo button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#periodo button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  render(b.dataset.p);
+}));
+render('todo');
+</script>
+</body>
+</html>

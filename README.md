@@ -6,3 +6,7 @@ Reporte de cierres de julio a septiembre 2026, con octubre (en curso) aparte: gr
 - `style.css`: hoja de estilos (dorado sobre negro petróleo).
 
 Se ve en GitHub Pages: https://pablodavidmoya.github.io/nova/
+
+## Versión para descargar
+
+`reporte-nova.html` es el mismo reporte en un solo archivo (con los estilos adentro) para abrir en cualquier compu sin internet. Se genera con `python build_descarga.py` después de cada cambio, y se baja con el botón **Descargar** de la página.
