@@ -58,6 +58,15 @@
     <div class="oct-grid" id="octGrid"></div>
   </section>
 
+  <section class="card capt" aria-label="Cartera y captaciones">
+    <h2>Cartera y captaciones</h2>
+    <p class="sub">Según el sistema C21 (capturas del 12/10/2026)</p>
+    <div class="oct-grid" id="cartGrid"></div>
+    <h3 class="capt-h">Efectividad de captaciones por producto</h3>
+    <div class="legend"><span style="--c:var(--capt)">Captaciones</span><span style="--c:var(--gold)">Cerradas</span></div>
+    <svg class="chart" id="cCapt" role="img" aria-label="Captaciones y cerradas por tipo de producto"></svg>
+  </section>
+
   <section class="card versus">
     <h2>Equipo: <span id="nEquipo">19</span> asesores</h2>
     <p class="sub">Por antigüedad en la oficina</p>
@@ -118,6 +127,22 @@ const D = {
   ],
   /* Octubre al 12/10: 2 cierres en Gs (convertidos a TC) y 1 en US$ */
   oct: { alqN: 2, venN: 1, alqG: 1430000 / TC + 1300, venG: 5500000 / TC, venP: 220000000 / TC },
+  /* Cartera y captaciones: dashboard del sistema C21 (12/10/2026) */
+  cartera: { promocion: 288, activos: 121, vencidos: 163 },
+  captaciones: [
+    { k: 'Departamento en pozo', c: 68, x: 10 },
+    { k: 'Terreno', c: 64, x: 1 },
+    { k: 'Departamento', c: 63, x: 48 },
+    { k: 'Casa', c: 45, x: 2 },
+    { k: 'Casa dúplex', c: 9, x: 2 },
+    { k: 'Casa en condominio', c: 6, x: 2 },
+    { k: 'Quinta', c: 5, x: 0 },
+    { k: 'Local', c: 4, x: 1 },
+    { k: 'Propiedad agrícola', c: 4, x: 0 },
+    { k: 'Nave', c: 3, x: 1 },
+    { k: 'Bodega', c: 1, x: 0 },
+    { k: 'Inmueble productivo', c: 1, x: 0 }
+  ],
   /* Asesores por antigüedad al 12/10/2026 (años de ingreso por confirmar) */
   equipo: [
     { k: 'Nuevos', d: 'menos de 6 meses', n: 10, c: 'var(--alq)' },
@@ -185,6 +210,34 @@ const hideTip = () => tip.classList.remove('on');
     ['Volumen de ventas', usd(O.venP), gs(O.venP)]
   ];
   $('#octGrid').innerHTML = items.map(([k, v, s]) => `<div><small>${k}</small><b>${v}</b><span>${s}</span></div>`).join('');
+})();
+
+/* ---- Cartera y captaciones (no depende del filtro) ---- */
+(function () {
+  const C = D.cartera, tc = sum(D.captaciones.map(d => d.c)), tx = sum(D.captaciones.map(d => d.x));
+  const items = [
+    ['En promoción', fmtN(C.promocion), 'propiedades publicadas'],
+    ['Contratos activos', fmtN(C.activos), pct(div(C.activos, C.activos + C.vencidos)) + ' de los contratos'],
+    ['Contratos vencidos', fmtN(C.vencidos), 'para renovar o dar de baja'],
+    ['Captaciones', fmtN(tc), 'por tipo de producto'],
+    ['Cerradas', fmtN(tx), pct(div(tx, tc)) + ' de efectividad']
+  ];
+  $('#cartGrid').innerHTML = items.map(([k, v, s]) => `<div><small>${k}</small><b>${v}</b><span>${s}</span></div>`).join('');
+
+  const svg = $('#cCapt'), rows = D.captaciones, W = 900, rowH = 34, m = { l: 170, r: 150, t: 4 };
+  const H = m.t + rowH * rows.length + 4, iw = W - m.l - m.r, max = Math.max(...rows.map(d => d.c));
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  rows.forEach((d, i) => {
+    const y = m.t + i * rowH, wc = d.c / max * iw, wx = d.x / max * iw;
+    el('text', { x: m.l - 12, y: y + 21, 'text-anchor': 'end' }, svg).textContent = d.k;
+    const g = el('g', { class: 'growx', style: `animation-delay:${i * .04}s` }, svg);
+    el('rect', { x: m.l, y: y + 6, width: wc, height: 22, rx: 4, fill: 'var(--capt)' }, g);
+    if (d.x) el('rect', { x: m.l, y: y + 6, width: wx, height: 22, rx: 4, class: 'seg', fill: 'var(--gold)' }, g);
+    el('text', { x: m.l + wc + 10, y: y + 21, class: 'val' }, svg).textContent = `${d.x} de ${d.c} · ${pct(div(d.x, d.c))}`;
+    const hit = el('rect', { x: m.l, y: y + 2, width: iw, height: rowH - 4, fill: 'transparent' }, svg);
+    hit.addEventListener('mousemove', e => showTip(e, `<b>${d.k}</b>${plural(d.c, 'captación', 'captaciones')} · ${plural(d.x, 'cerrada', 'cerradas')}<br>Efectividad ${pct(div(d.x, d.c))}`));
+    hit.addEventListener('mouseleave', hideTip);
+  });
 })();
 
 /* ---- Equipo (no depende del filtro) ---- */
