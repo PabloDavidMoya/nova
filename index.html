@@ -89,7 +89,7 @@
 
   <section class="card" style="margin-bottom:14px">
     <h2>Gross por tipo de punta</h2>
-    <p class="sub">Quién trajo el negocio: propiedad propia, captación, colocación o ambas.</p>
+    <p class="sub">Quién trajo el negocio: solo captación, solo colocación o ambas puntas.</p>
     <svg class="chart" id="cLados" role="img" aria-label="Gross por tipo de punta"></svg>
   </section>
 
@@ -120,9 +120,9 @@ const D = {
   alq: { n: [22, 0, 8], g: [7049.25, 0, 3879.72],   p: [7578.14, 0, 6483.96] },
   ven: { n: [5, 7, 7],  g: [13756.19, 19186.71, 13647.57], p: [407728, 453989, 403768.66] },
   lados: [
+    /* "Capta/Coloca" de la planilla se cuenta como Ambas puntas (mismo concepto) */
+    { k: 'Ambas puntas', n: [19, 5, 3], g: [9845.00 + 1513.83, 14700.75, 5899.00 + 246.55] },
     { k: 'Colocación',   n: [6, 0, 11], g: [8009.14, 0, 10196.74] },
-    { k: 'Capta/Coloca', n: [3, 5, 1],  g: [1513.83, 14700.75, 246.55] },
-    { k: 'Ambas puntas', n: [16, 0, 2], g: [9845.00, 0, 5899.00] },
     { k: 'Captación',    n: [2, 2, 1],  g: [1437.47, 4485.96, 1185.00] }
   ],
   /* Octubre al 12/10: 2 cierres en Gs (convertidos a TC) y 1 en US$ */
