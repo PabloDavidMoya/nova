@@ -60,7 +60,7 @@
 
   <section class="card capt" aria-label="Cartera y captaciones">
     <h2>Cartera y captaciones</h2>
-    <p class="sub">Según el sistema C21 (capturas del 12/10/2026)</p>
+    <p class="sub">Según el sistema C21 · captaciones de enero al 12/10/2026</p>
     <div class="oct-grid" id="cartGrid"></div>
     <h3 class="capt-h">Efectividad de captaciones por producto</h3>
     <div class="legend"><span style="--c:var(--capt)">Captaciones</span><span style="--c:var(--gold)">Cerradas</span></div>
@@ -214,12 +214,14 @@ const hideTip = () => tip.classList.remove('on');
 
 /* ---- Cartera y captaciones (no depende del filtro) ---- */
 (function () {
+  /* enero al 12/10/2026 = 9 meses y 12 días */
+  const MESES_CAPT = 9 + 12 / 31;
   const C = D.cartera, tc = sum(D.captaciones.map(d => d.c)), tx = sum(D.captaciones.map(d => d.x));
   const items = [
     ['En promoción', fmtN(C.promocion), 'propiedades publicadas'],
     ['Contratos activos', fmtN(C.activos), pct(div(C.activos, C.activos + C.vencidos)) + ' de los contratos'],
     ['Contratos vencidos', fmtN(C.vencidos), 'para renovar o dar de baja'],
-    ['Captaciones', fmtN(tc), 'registradas en el sistema'],
+    ['Captaciones', fmtN(tc), 'enero a hoy · ≈ ' + fmtN(tc / MESES_CAPT) + ' por mes'],
     ['Cerradas', fmtN(tx), pct(div(tx, tc)) + ' de efectividad']
   ];
   $('#cartGrid').innerHTML = items.map(([k, v, s]) => `<div><small>${k}</small><b>${v}</b><span>${s}</span></div>`).join('');
