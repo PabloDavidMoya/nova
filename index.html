@@ -219,7 +219,7 @@ const hideTip = () => tip.classList.remove('on');
     ['En promoción', fmtN(C.promocion), 'propiedades publicadas'],
     ['Contratos activos', fmtN(C.activos), pct(div(C.activos, C.activos + C.vencidos)) + ' de los contratos'],
     ['Contratos vencidos', fmtN(C.vencidos), 'para renovar o dar de baja'],
-    ['Captaciones', fmtN(tc), 'por tipo de producto'],
+    ['Captaciones', fmtN(tc), 'registradas en el sistema'],
     ['Cerradas', fmtN(tx), pct(div(tx, tc)) + ' de efectividad']
   ];
   $('#cartGrid').innerHTML = items.map(([k, v, s]) => `<div><small>${k}</small><b>${v}</b><span>${s}</span></div>`).join('');
